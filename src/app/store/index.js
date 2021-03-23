@@ -28,6 +28,16 @@ export const store = createStore(
               ? { ...task, isComplete: action.isCompleted }
               : task
           );
+        case mutations.SET_TASK_GROUP:
+          return tasks.map(task =>
+            task.id === action.taskID
+              ? { ...task, group: action.groupID }
+              : task
+          );
+        case mutations.SET_TASK_NAME:
+          return tasks.map(task =>
+            task.id === action.taskID ? { ...task, name: action.name } : task
+          );
       }
       return tasks;
     },
