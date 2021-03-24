@@ -1,12 +1,26 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { connectDB } from './connect-db';
 
 let port = 4040;
 let app = express();
 
 app.listen(port, console.log('Server listening to port', port));
 
-app.get('/', (req, res) => {
-  res.send('Hi Daniel Stern :D');
+// app.get('/', (req, res) => {
+//   res.send('Hi Daniel Stern :D');
+// });
+
+app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
+
+export const addNewTask = async task => {
+  let db = await connectDB();
+  let collection = db.collection('tasks');
+  await collection.insertOne(task);
+};
+app.post('/task/new', async (req, res) => {
+  let task = req.body.task;
+  await addNewTask(task);
+  res.status(200).send();
 });
