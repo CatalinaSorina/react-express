@@ -22,7 +22,7 @@ export function* taskCreationSaga() {
       },
     });
 
-    console.log('Got response', res);
+    // console.log('Got response', res);
   }
 }
 
@@ -57,14 +57,14 @@ export function* userAuthenticateSaga() {
       if (!data) {
         throw new Error();
       }
-      console.log('Authenticated', data);
+      // console.log('Authenticated', data);
 
       yield put(mutations.setState(data.state));
       yield put(mutations.processAuthenticateUser(mutations.AUTHENTICATED));
 
       history.push('/dashboard');
     } catch (e) {
-      console.log("can't authenticate");
+      // console.log("can't authenticate");
       yield put(mutations.processAuthenticateUser(mutations.NOT_AUTHENTICATED));
     }
   }

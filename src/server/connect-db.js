@@ -8,7 +8,7 @@ export async function connectDB() {
     useUnifiedTopology: true,
   });
   db = client.db();
-  console.log('Got DB', db);
+  // console.log('Got DB', db);
   return db;
 }
 

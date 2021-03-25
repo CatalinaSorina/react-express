@@ -8,7 +8,7 @@ import { ConnectedLogin } from './Login';
 import { ConnectedTaskDetail } from './TaskDetail';
 
 const RouteGuard = Component => ({ match }) => {
-  console.log('Route guard', match);
+  // console.log('Route guard', match);
   if (!store.getState().session.authenticated) {
     // reroute
     return <Redirect to='/' />;
