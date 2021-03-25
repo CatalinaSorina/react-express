@@ -5,7 +5,7 @@ import { connectDB } from './connect-db';
 import './initialize-db';
 import { authenticateRoute } from './authenticate';
 
-let port = 4040;
+let port = process.env.PORT || 4040;
 let app = express();
 
 app.listen(port, console.log('Server listening to port', port));
@@ -16,6 +16,13 @@ app.listen(port, console.log('Server listening to port', port));
 
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 authenticateRoute(app);
+
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static(path.resolve(__dirname, '../../dist')));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve('index.html'));
+  });
+}
 
 export const addNewTask = async task => {
   let db = await connectDB();
