@@ -6,6 +6,7 @@ import { history } from '../store/history';
 import { ConnectedDashboard } from './Dashboard';
 import { ConnectedLogin } from './Login';
 import { ConnectedTaskDetail } from './TaskDetail';
+import { ConnectedUserDetails } from './UserDetails';
 
 const RouteGuard = Component => ({ match }) => {
   // console.log('Route guard', match);
@@ -18,6 +19,7 @@ const RouteGuard = Component => ({ match }) => {
 export const Main = () => (
   <Router history={history}>
     <Provider store={store}>
+      <ConnectedUserDetails />
       <div className='d-flex justify-content-center align-items-center h-75'>
         <Route exact path='/' component={ConnectedLogin} />
         <Route

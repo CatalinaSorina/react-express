@@ -9,7 +9,7 @@ const url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:4040';
 export function* taskCreationSaga() {
   while (true) {
     const { groupID } = yield take(mutations.REQUEST_TASK_CREATION);
-    const ownerID = 'U1';
+    const ownerID = ['U1'];
     const taskID = uuid();
     yield put(mutations.createTask(taskID, groupID, ownerID));
     const { res } = yield axios.post(url + '/task/new', {

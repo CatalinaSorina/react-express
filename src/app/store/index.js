@@ -9,10 +9,15 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
   combineReducers({
     session(userSession = defaultState.session, action) {
-      let { type, authenticated, session } = action;
+      let { type, authenticated } = action;
       switch (type) {
         case mutations.SET_STATE:
-          return { ...userSession, id: action.state.session.id };
+          return {
+            ...userSession,
+            id: action.state.session.id,
+            name: action.state.session.name,
+            friends: action.state.session.friends,
+          };
         case mutations.REQUEST_AUTHENTICATE_USER:
           return { ...userSession, authenticated: mutations.AUTHENTICATING };
         case mutations.PROCESSING_AUTHENTICATE_USER:
@@ -33,7 +38,8 @@ export const store = createStore(
               id: action.taskID,
               name: 'New task',
               group: action.groupID,
-              owner: action.ownerID,
+              owner: [action.ownerID],
+              access: action.access,
               isComplete: false,
             },
           ];
