@@ -12,6 +12,7 @@ const TaskDetail = ({
   setTaskCompletion,
   setTaskGroup,
   setTaskName,
+  username,
 }) => (
   <div className='card p-3 col-6'>
     <div>
@@ -40,6 +41,22 @@ const TaskDetail = ({
         ))}
       </select>
     </div>
+    <div className='mt-3'>
+      Users access:
+      {task.access.length === 1
+        ? ' only you'
+        : task.access.map(
+            (user, id) =>
+              user != username && (
+                <span
+                  key={id}
+                  className='card d-inline-flex text-white bg-secondary p-1 mx-1'
+                  style={{ width: 'fit-content' }}>
+                  {user}
+                </span>
+              )
+          )}
+    </div>
     <div>
       <Link to='/dashboard'>
         <button className='btn btn-dark mt-2'>Done</button>
@@ -51,13 +68,13 @@ const TaskDetail = ({
 const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.id;
   let task = state.tasks.find(task => task.id === id);
-  let groups = state.groups;
 
   return {
     id,
     task,
-    groups,
+    groups: state.groups,
     isComplete: task.isComplete,
+    username: state.session.name,
   };
 };
 
