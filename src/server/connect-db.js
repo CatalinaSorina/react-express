@@ -1,7 +1,5 @@
 import { MongoClient } from 'mongodb';
-const url =
-  'mongodb+srv://React:Express@cluster0.mlkg7.mongodb.net/react-express-tutorial?retryWrites=true&w=majority' ||
-  `mongodb://localhost:27017`;
+const url = 'mongodb+srv://React:Express@cluster0.mlkg7.mongodb.net/react-express-tutorial?retryWrites=true&w=majority';
 const DB_NAME = 'react-express-tutorial';
 let db = null;
 
