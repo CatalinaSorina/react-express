@@ -9,7 +9,8 @@ export async function connectDB() {
     useUnifiedTopology: true,
   });
   db = client.db(DB_NAME);
-  // console.log('Got DB', db);
+  console.log('MONGO', process.env.MONGODB_URI);
+  console.log('Got DB', db);
   return db;
 }
 
