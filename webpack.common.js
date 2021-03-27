@@ -5,7 +5,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'app'),
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Production',
+      title: 'React express',
     }),
   ],
   resolve: {
