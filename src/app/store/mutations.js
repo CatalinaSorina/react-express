@@ -10,16 +10,14 @@ export const AUTHENTICATED = 'AUTHENTICATED';
 export const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
 export const SET_STATE = 'SET_STATE';
 
-export const requestTaskCreation = groupID => ({
+export const requestTaskCreation = task => ({
   type: REQUEST_TASK_CREATION,
-  groupID,
+  task,
 });
 
-export const createTask = (taskID, groupID, ownerID) => ({
+export const createTask = task => ({
   type: CREATE_TASK,
-  taskID,
-  groupID,
-  ownerID,
+  task,
 });
 
 export const setTaskCompletion = (id, isCompleted) => ({

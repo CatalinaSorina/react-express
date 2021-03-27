@@ -31,18 +31,7 @@ export const store = createStore(
         case mutations.SET_STATE:
           return action.state.tasks;
         case mutations.CREATE_TASK:
-          // console.log(action);
-          return [
-            ...tasks,
-            {
-              id: action.taskID,
-              name: 'New task',
-              group: action.groupID,
-              owner: [action.ownerID],
-              access: action.access,
-              isComplete: false,
-            },
-          ];
+          return [...tasks, action.task];
         case mutations.SET_TASK_COMPLETE:
           return tasks.map(task =>
             task.id === action.taskID

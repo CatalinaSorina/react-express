@@ -3,13 +3,13 @@ import { Provider } from 'react-redux';
 import { Router, Route, Redirect } from 'react-router';
 import { store } from '../store';
 import { history } from '../store/history';
+import { ConnectedCreateTask } from './CreateTask';
 import { ConnectedDashboard } from './Dashboard';
 import { ConnectedLogin } from './Login';
 import { ConnectedTaskDetail } from './TaskDetail';
 import { ConnectedUserDetails } from './UserDetails';
 
 const RouteGuard = Component => ({ match }) => {
-  // console.log('Route guard', match);
   if (!store.getState().session.authenticated) {
     // reroute
     return <Redirect to='/' />;
@@ -31,6 +31,11 @@ export const Main = () => (
           exact
           path='/task/:id'
           render={RouteGuard(ConnectedTaskDetail)}
+        />
+        <Route
+          exact
+          path='/create-task/:id'
+          render={RouteGuard(ConnectedCreateTask)}
         />
       </div>
     </Provider>
