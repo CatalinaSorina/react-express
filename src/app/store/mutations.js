@@ -20,10 +20,10 @@ export const createTask = task => ({
   task,
 });
 
-export const setTaskCompletion = (id, isCompleted) => ({
+export const setTaskCompletion = (id, isComplete) => ({
   type: SET_TASK_COMPLETE,
   taskID: id,
-  isCompleted,
+  isComplete,
 });
 
 export const setTaskName = (id, name) => ({

@@ -14,7 +14,7 @@ const TaskDetail = ({
   setTaskName,
   username,
 }) => (
-  <div className='card p-3 col-6'>
+  <div className={`card ${isComplete && 'bg-info'} p-3 col-6`}>
     <div>
       <input
         onChange={setTaskName}
@@ -22,11 +22,12 @@ const TaskDetail = ({
         className='form-control form-control-lg'
       />
     </div>
-    <div>
+    <div className=' d-inline-flex align-items-center'>
+      Task is {isComplete ? '✓ completed' : 'not completed'}.
       <button
         onClick={() => setTaskCompletion(id, !isComplete)}
-        className='btn btn-dark mt-2'>
-        {isComplete ? 'Complete' : 'Reopen task'}
+        className={`btn ${isComplete ? 'btn-light' : 'btn-info'} m-2`}>
+        {isComplete ? 'Reopen task' : 'Complete task'}
       </button>
     </div>
     <div className='mt-3'>
@@ -50,14 +51,16 @@ const TaskDetail = ({
               user != username && (
                 <span
                   key={id}
-                  className='card d-inline-flex text-white bg-secondary p-1 mx-1'
+                  className={`card d-inline-flex ${
+                    !isComplete && 'text-white bg-secondary'
+                  } p-1 mx-1`}
                   style={{ width: 'fit-content' }}>
                   {user}
                 </span>
               )
           )}
     </div>
-    <div>
+    <div className='align-self-center'>
       <Link to='/dashboard'>
         <button className='btn btn-dark mt-2'>Done</button>
       </Link>

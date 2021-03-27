@@ -8,7 +8,10 @@ export const TaskList = ({ tasks, name, groupID }) => (
     <h3>{name}</h3>
     {tasks.map(task => (
       <Link to={`/task/${task.id}`} key={task.id} className='badge badge-light'>
-        <div className='card p-2'>{task.name}</div>
+        <div className='card p-2 flex-row justify-content-between'>
+          {task.name}
+          {task.isComplete && <span className=''>✓</span>}
+        </div>
       </Link>
     ))}
     <Link
@@ -25,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
     name: ownProps.name,
     id: ownProps.id,
     tasks: state.tasks.filter(task => task.group === groupID),
-    groupID
+    groupID,
   };
 };
 
