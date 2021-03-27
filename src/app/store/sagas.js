@@ -12,7 +12,9 @@ export function* taskCreationSaga() {
     const taskID = uuid();
     const newTask = { id: taskID, isComplete: false, ...task };
     yield put(mutations.createTask(newTask));
-    const { res } = yield axios.post(url + '/task/new', { task: newTask });
+    const { res } = yield axios.post(url + '/.netlify/functions/task/new', {
+      task: newTask,
+    });
   }
 }
 
@@ -23,7 +25,7 @@ export function* taskModificationSaga() {
       mutations.SET_TASK_COMPLETE,
       mutations.SET_TASK_NAME,
     ]);
-    axios.post(url + '/task/update', {
+    axios.post(url + '/.netlify/functions/task/update', {
       task: {
         id: task.taskID,
         group: task.groupID,

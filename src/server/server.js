@@ -7,6 +7,7 @@ import { authenticateRoute } from './authenticate';
 
 let port = process.env.PORT || 4040;
 let app = express();
+const netlifyPATH = '/.netlify/functions/';
 
 app.listen(port, console.log('Server listening to port', port));
 
@@ -29,7 +30,7 @@ export const addNewTask = async task => {
   let collection = db.collection('tasks');
   await collection.insertOne(task);
 };
-app.post('/task/new', async (req, res) => {
+app.post(`${netlifyPATH}task/new`, async (req, res) => {
   let task = req.body.task;
   await addNewTask(task);
   res.status(200).send();
@@ -51,7 +52,7 @@ export const updateTask = async task => {
   }
 };
 
-app.post('/task/update', async (req, res) => {
+app.post(`${netlifyPATH}task/update`, async (req, res) => {
   let task = req.body.task;
   await updateTask(task);
   res.status(200).send();
