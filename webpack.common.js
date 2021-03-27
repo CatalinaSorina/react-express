@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'app'),
+  entry: './src/app/index.js',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React express',
@@ -10,9 +10,6 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
-  devServer: {
-    historyApiFallback: true,
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
