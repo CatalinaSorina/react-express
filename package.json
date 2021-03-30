@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
+    "build": "webpack-dev-server --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve",
     "initialize": "babel-node src/server/initialize-db",
