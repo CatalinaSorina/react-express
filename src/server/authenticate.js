@@ -2,6 +2,7 @@ import uuid from 'uuid';
 import md5 from 'md5';
 import { connectDB } from './connect-db';
 import { AUTHENTICATED } from '../app/store/mutations';
+import { netlifyPATH } from './server';
 
 const authenticateTokens = [];
 
@@ -24,7 +25,7 @@ async function assembleUserState(user) {
 }
 
 export const authenticateRoute = app => {
-  app.post('/authenticate', async (req, res) => {
+  app.post(`${netlifyPATH}/authenticate`, async (req, res) => {
     let { username, password } = req.body;
     let db = await connectDB();
     let collection = db.collection('users');

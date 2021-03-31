@@ -7,7 +7,7 @@ import { authenticateRoute } from './authenticate';
 
 let port = process.env.PORT || 4040;
 let app = express();
-const netlifyPATH = '/.netlify/functions/';
+export const netlifyPATH = '/.netlify/functions/';
 
 app.listen(port, console.log('Server listening to port', port));
 

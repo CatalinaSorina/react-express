@@ -42,7 +42,7 @@ export function* userAuthenticateSaga() {
       mutations.REQUEST_AUTHENTICATE_USER
     );
     try {
-      const { data } = yield axios.post(url + '/authenticate', {
+      const { data } = yield axios.post(url + '/.netlify/functions/authenticate', {
         username,
         password,
       });
