@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app/index.js',
+  entry: path.resolve(__dirname, 'src', 'app'),
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React express',
+      template: 'index.html',
     }),
   ],
   resolve: {
