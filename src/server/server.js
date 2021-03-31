@@ -6,7 +6,7 @@ import routes from './routes';
 
 let port = process.env.PORT || 4040;
 let app = express();
-const API_MAIN_ROUTE = process.env.NODE_ENV == 'production' ? '/.netlify/functions/' : '';
+const API_MAIN_ROUTE = '/App';
 
 app.listen(port, console.log('Server listening to port', port));
 
