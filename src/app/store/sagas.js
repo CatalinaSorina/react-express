@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as mutations from './mutations';
 import { history } from './history';
 
-const url = process.env.NODE_ENV == 'production' ? '/.netlify/functions' : 'http://localhost:4040/App';
+const url = process.env.NODE_ENV == 'production' ? '/.netlify/functions' : 'http://localhost:4040/.netlify/functions';
 
 export function* taskCreationSaga() {
   while (true) {
