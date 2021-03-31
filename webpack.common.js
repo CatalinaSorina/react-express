@@ -7,7 +7,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'React express',
       template: 'index.html',
-      favicon: 'react-express.png',
+      favicon: 'favicon.ico',
     }),
   ],
   resolve: {
