@@ -1,4 +1,4 @@
-import { addNewTask, updateTask } from './server';
+import { addNewTask, updateTask } from './routes';
 
 (async function func() {
   await addNewTask({
