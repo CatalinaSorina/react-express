@@ -53,7 +53,7 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const db = await connectDB(url);
 
-  if (event.httpMethod === 'POST') {
+  if (event.httpMethod === 'POST' || event.httpMethod === 'GET') {
     return authentication(db, JSON.parse(event.body));
   }
   return { statusCode: 400 };
