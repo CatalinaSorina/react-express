@@ -22,7 +22,6 @@
     "@babel/preset-react": "^7.12.13",
     "@babel/register": "^7.13.8",
     "babel-loader": "^8.2.2",
-    "body-parser": "^1.19.0",
     "concurrently": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

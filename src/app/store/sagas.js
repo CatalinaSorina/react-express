@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as mutations from './mutations';
 import { history } from './history';
 
-const url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:4040';
+const url = process.env.NODE_ENV == 'production' ? '/.netlify/functions' : 'http://localhost:4040';
 
 export function* taskCreationSaga() {
   while (true) {
@@ -12,7 +12,7 @@ export function* taskCreationSaga() {
     const taskID = uuid();
     const newTask = { id: taskID, isComplete: false, ...task };
     yield put(mutations.createTask(newTask));
-    const { res } = yield axios.post(url + '/.netlify/functions/task/new', {
+    const { res } = yield axios.post(url + '/task/new', {
       task: newTask,
     });
   }
@@ -25,7 +25,7 @@ export function* taskModificationSaga() {
       mutations.SET_TASK_COMPLETE,
       mutations.SET_TASK_NAME,
     ]);
-    axios.post(url + '/.netlify/functions/task/update', {
+    axios.post(url + '/task/update', {
       task: {
         id: task.taskID,
         group: task.groupID,
@@ -42,7 +42,7 @@ export function* userAuthenticateSaga() {
       mutations.REQUEST_AUTHENTICATE_USER
     );
     try {
-      const { data } = yield axios.post(url + '/.netlify/functions/authenticate', {
+      const { data } = yield axios.post(url + '/authenticate', {
         username,
         password,
       });
